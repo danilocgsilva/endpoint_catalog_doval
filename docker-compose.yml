@@ -1,0 +1,17 @@
+services:
+  endpoint_catalog_doval:
+    build:
+      context: ./docker_env
+    container_name: endpoint_catalog_doval
+    volumes:
+      - './www:/var/www'
+    ports:
+      - '4435:80'
+    working_dir: /var/www
+  endpoint_catalog_doval_db:
+    image: 'mysql:latest'
+    container_name: endpoint_catalog_doval_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=verystrongpassword
+    ports:
+      - '6906:3306'
